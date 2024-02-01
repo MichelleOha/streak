@@ -9,9 +9,11 @@ class PaymentsController < ApplicationController
     if payment.save
       render json: payment, status: :created
     else
-      render json: payment.errors, status: unprocessable_entity
+      render json: payment.errors, status: unprocessable_entity 
     end
   end
+
+  private
 
   def payment_params
     params.require(:payment).permit(:amount, :description)
