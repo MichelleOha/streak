@@ -2,10 +2,11 @@
 
 Using tutorial video: https://www.youtube.com/watch?v=FJiIvFoxqsc
 
-Create new rails API: (we use the --api because this will not have a frontEnd)
+Create new rails API:
 rails new (file name) --api
 
 router.rb is responsible for taking incoming requests and dispatching them to the controller. E.g. Get/payments
+
 
 Generate Controller: 
 rails g controller (file name) index
@@ -38,7 +39,7 @@ rails s
 
 open a new terminal and open console:
 
-bin/rails c
+rails c
 
 add some payments to our table with:
 
@@ -109,5 +110,23 @@ but the syntax is outdated, and it doesn't work well for large objects. So if th
 
  insert screenshot
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 * Challenges:
 Whilst creating the API, the rails s and other commands weren't working. . . After researching it, I realised I wasn't in the streak directory instead trying to run the commands from Streak_1. Easy fix!
+
+
