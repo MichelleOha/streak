@@ -7,7 +7,6 @@ rails new (file name) --api
 
 router.rb is responsible for taking incoming requests and dispatching them to the controller. E.g. Get/payments
 
-
 Generate Controller: 
 rails g controller (file name) index
 This is where the requests are handled. Add head: ok to receive a successful 200 response.
@@ -109,22 +108,6 @@ but the syntax is outdated, and it doesn't work well for large objects. So if th
  add an amount and a string description, status 201 created should be received:
 
  insert screenshot
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 * Challenges:
 Whilst creating the API, the rails s and other commands weren't working. . . After researching it, I realised I wasn't in the streak directory instead trying to run the commands from Streak_1. Easy fix!
