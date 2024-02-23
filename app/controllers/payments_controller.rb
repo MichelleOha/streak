@@ -13,9 +13,17 @@ class PaymentsController < ApplicationController
     end
   end
 
-  private
+  def show
+    payment = Payment.find(params[:id])
 
-  def payment_params
-    params.require(:payment).permit(:amount, :description)
+    render json: payment, status: :ok
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: 'Payment not found' }, status: :not_found
   end
+end
+
+private
+
+def payment_params
+  params.require(:payment).permit(:amount, :description, :id)
 end
