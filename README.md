@@ -54,15 +54,11 @@ curl http:/localhost:3000/payment -v
 
 And you can see at the bottom 2 new objects have been created with an id.
 
-(insert screen shot)
-
 We are able to list payments but not create them so let's create an endpoint now POST/payments:
 
 go to routes.rb file and update the existing resource to include create. To find the routes that are available, in your terminal:
 
 rails routes | grep payments
-
-insert screenshot 
 
 remove get 'payments/index' from routes.rb.
 
@@ -93,11 +89,11 @@ Else case if the save is unsuccessful then we will render the errors message. Ra
 One last thing to improve with this code, and that is pulling the values directly out of the params hash works,
 but the syntax is outdated, and it doesn't work well for large objects. So if this object payment becomes too large we have to remember each time to pull out the field that we want and this line's going to get very long instead it's recommended doing a mass update and using strong params which means we can replace the params with a new method called payment_params. Then we create a private method called payment_params and add the params and values:
 
- (amount: params[:amount], description: params[:description])
+ `(amount: params[:amount], description: params[:description])`
 
  And we use rails syntax where we describe the object structure correctly. So it must be a payment object at the top level and inside that we can .permit the specific params we want:
 
- params.require(:payment).permit(:amount, :description)
+ `params.require(:payment).permit(:amount, :description)`
 
  Now when an object is posted to our Rails browser application we check that there is a payment object and we permit these two fields build amount :amount, :description.
 
@@ -107,11 +103,11 @@ but the syntax is outdated, and it doesn't work well for large objects. So if th
 
  add an amount and a string description, status 201 created should be received:
 
- insert screenshot
+ ![POST image](assets/post.png)
 
- Now let's get a payment for a specific user with their id. 
+ Now let's get a specific payment by id. 
 
- Go to payments_controller.rb. Add the following action to handle this get request and handle the error if the user_id doesn't exist:
+ Go to payments_controller.rb. Add the following action to handle this get request and handle the error if the id doesn't exist:
 
  `def show`
     `payment = Payment.find(params[:id])`
@@ -121,7 +117,7 @@ but the syntax is outdated, and it doesn't work well for large objects. So if th
     `render json: { error: 'Payment not found' }, status: :not_found`
   `end`
 
-  The `show` action in the PaymentsController finds the payment by the user ID and renders it as JSON.If the payment is not found, it returns a JSON response with a 'not_found' status
+  The `show` action in the PaymentsController finds the payment by the ID and renders it as JSON. If the payment is not found, it returns a JSON response with a 'not_found' status
 
   Make sure to add the :id to the private method:
 
@@ -142,14 +138,14 @@ but the syntax is outdated, and it doesn't work well for large objects. So if th
 
 click send and it should display payment for the user with id 1.
 
-insert screenshot
+![GET image](assets/get1.png)
 
 If you change the user id to 9:
   http://localhost:3000/payments/1
 
 you should receive an error message of Payment not found as this user doesn't exist yet.
 
-insert screenshot
+![GET error image](assets/get9.png)
 
 
 * Challenges:
