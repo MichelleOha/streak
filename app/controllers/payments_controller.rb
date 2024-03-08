@@ -9,9 +9,10 @@ class PaymentsController < ApplicationController
       render json: payment, status: :created
     else
       render json: payment.errors, status: unprocessable_entity 
+    end
   end
 
-  def show 
+  def show
     payment = Payment.find(params[:id])
     render json: payment, status: :ok
   rescue ActiveRecord::RecordNotFound
@@ -21,7 +22,6 @@ end
 
 private
 
-  def payment_params
-    params.require(:payment).permit(:amount, :description, :id)
-  end
+def payment_params
+  params.require(:payment).permit(:amount, :description, :id)
 end
